@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Build') { 
             steps { 
-                sh 'mkdir vinu' 
+                sh 'mkdir demo' 
             }
         }
         stage('Test'){
             steps {
-                sh 'touch vinu/sharma'
+                sh 'touch demo/link'
              
             }
         }
