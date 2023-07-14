@@ -1,0 +1,35 @@
+pipeline { 
+    agent {label "antinode"}
+    stages {
+        stage('Build') { 
+            steps { 
+             echo "this is my jenkins"
+             git url: 'https://github.com/Vinayaksharmagit/studentapp-ui.git'
+            
+            }
+        }
+        stage('Test'){
+            steps {
+            
+                 sh '''
+                sudo apt-get update 
+                sudo apt-get install maven -y
+                sudo mvn -v 
+                sudo mvn clean 
+                sudo mvn package
+                '''
+                
+             
+            }
+        }
+        stage('Deploy') {
+            steps {
+            sh "curl -O https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.91/bin/apache-tomcat-8.5.91.tar.gz"
+            sh "sudo apt-get install unzip -y"
+            sh "sudo tar -xvf apache-tomcat-8.5.91.tar.gz"
+            sh "sudo apache-tomcat-8.5.91/bin/catalina.sh start"
+            sh  "sudo mv /home/ubuntu/workspace/naruto/target/studentapp-2.2-SNAPSHOT.war /home/ubuntu/workspace/naruto/apache-tomcat-8.5.91/webapps/studentapp.war"
+            }
+        }
+    }
+}
