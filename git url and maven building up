@@ -1,5 +1,5 @@
 pipeline { 
-    agent {label "antinode"}
+    agent {label "lovinya"}
     stages {
         stage('Build') { 
             steps { 
@@ -28,7 +28,7 @@ pipeline {
             sh "sudo apt-get install unzip -y"
             sh "sudo tar -xvf apache-tomcat-8.5.91.tar.gz"
             sh "sudo apache-tomcat-8.5.91/bin/catalina.sh start"
-            sh  "sudo mv /home/ubuntu/workspace/naruto/target/studentapp-2.2-SNAPSHOT.war /home/ubuntu/workspace/naruto/apache-tomcat-8.5.91/webapps/studentapp.war"
+            sh  "sudo mv /home/ubuntu/workspace/promaster/target/studentapp-2.2-SNAPSHOT.war /home/ubuntu/workspace/promaster/apache-tomcat-8.5.91/webapps/studentapp.war"
             }
         }
     }
