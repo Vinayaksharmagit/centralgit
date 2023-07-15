@@ -25,10 +25,9 @@ pipeline {
         stage('Deploy') {
             steps {
             sh "curl -O https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.91/bin/apache-tomcat-8.5.91.tar.gz"
-            sh "sudo apt-get install unzip -y"
             sh "sudo tar -xvf apache-tomcat-8.5.91.tar.gz"
             sh "sudo apache-tomcat-8.5.91/bin/catalina.sh start"
-            sh  "sudo mv /home/ubuntu/workspace/promaster/target/studentapp-2.2-SNAPSHOT.war /home/ubuntu/workspace/promaster/apache-tomcat-8.5.91/webapps/studentapp.war"
+            sh  "sudo mv /home/ubuntu/workspace/pipelinename/target/studentapp-2.2-SNAPSHOT.war /home/ubuntu/workspace/pipelinename/apache-tomcat-8.5.91/webapps/studentapp.war"
             }
         }
     }
